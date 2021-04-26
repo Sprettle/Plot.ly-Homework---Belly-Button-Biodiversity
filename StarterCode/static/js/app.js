@@ -3,7 +3,7 @@ function init() {
     // Select html location '#selDataset' and assign to variable
     var dropdownMenu = d3.select("#selDataset");
     // Extract out all the ids
-    d3.json("/data/samples.json").then((importedData) =>{
+    d3.json("data/samples.json").then((importedData) =>{
         var data = importedData; 
         var names_list = data.names;
         // Append each id within the names_list
@@ -46,7 +46,7 @@ function addDemoInfo(idNo){
     info_table = d3.select("#sample-metadata");
     info_table.html("");
     //Append data into table
-    d3.json("/data/samples.json").then((importedData) => {
+    d3.json("data/samples.json").then((importedData) => {
         var metaInfo = importedData.metadata;
         var filteredInfo = metaInfo.filter(obj => obj.id == idNo);
         var selectedInfo = filteredInfo[0];
@@ -65,7 +65,7 @@ function addDemoInfo(idNo){
 function addCharts(idNo){
     
     // Extract out id, otu_ids, sample_values
-    d3.json("/data/samples.json").then((data) => {
+    d3.json("data/samples.json").then((data) => {
     var metaData = data.samples;
     var filteredSampInfo = metaData.filter(obj => obj.id == idNo)[0];
     
@@ -124,7 +124,7 @@ function addCharts(idNo){
 function addGauge(idNo){
 
     // EXTRACT variable washFreq of the selected ids
-    d3.json("/data/samples.json").then((importedData) => {
+    d3.json("data/samples.json").then((importedData) => {
         var data = importedData;
         var metadata = data.metadata;
         var filterIdData = metadata.filter(obj=>obj.id == idNo);
